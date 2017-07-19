@@ -17,6 +17,7 @@ Vue.config.productionTip = false
 Vue.use(ElementUI);
 Vue.component('icon-svg', IconSvg)
 
+
 const whiteList = ['/login'];
 router.beforeEach((to, from, next) => {
   NProgress.start();

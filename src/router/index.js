@@ -19,6 +19,7 @@ const Err404 = _import('404');
 const Form = _import('page/form');
 const Table = _import('table/index');
 const CustomerOrderAdd = _import('customer/order_add');
+const OrderList = _import('order/list');
 
 Vue.use(Router);
 
@@ -56,7 +57,8 @@ export const asyncRouterMap = [
     name: '客户管理',
     icon: 'zujian',
     children: [
-        { path: 'index', component: CustomerOrderAdd, name: '一键下单', icon: 'zonghe' }
+        { path: 'index', component: CustomerOrderAdd, name: '一键下单', icon: 'zonghe' },
+        { path: 'index2', component: OrderList, name: '订单管理', icon: 'zonghe' }
     ]
   },
   {

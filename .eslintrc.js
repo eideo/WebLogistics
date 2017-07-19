@@ -23,6 +23,7 @@ module.exports = {
     },
     // add your custom rules here
     'rules': {
+        //"linebreak-style":["error", "windows"],
         // don't require .vue extension when importing
         // 'import/extensions': ['error', 'always', {
         //     'js': 'never',
@@ -189,7 +190,7 @@ module.exports = {
         'keyword-spacing': 'error',
 
         // enforce consistent linebreak style
-        'linebreak-style': 'error',
+        //'linebreak-style': 'error',
 
         // require or disallow newlines around directives
         'lines-around-directive': 'error',
