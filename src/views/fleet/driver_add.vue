@@ -101,46 +101,49 @@
 
                 <el-row>
                     <el-col>
-                        <el-row v-for="(license, index) in ruleForm.other_license" :key="license.key">
+                        <el-row v-for="(license, index) in ruleForm.other_license" >
                             <el-row>
                                 <el-col :span="8">
-                                    <el-form-item label="籍贯">
+                                    <el-form-item label="证件编号">
                                         <el-input v-model="license.number"></el-input>
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
-                                    <el-form-item label="邮箱">
+                                    <el-form-item label="证件类型">
                                         <el-input v-model="license.type"></el-input>
                                     </el-form-item>
                                 </el-col>
                             </el-row>
                             <el-row>
                                 <el-col :span="8">
-                                    <el-form-item label="籍贯">
-                                        <el-input v-model="license.pass_time"></el-input>
+                                    <el-form-item label="办证日期">
+                                        <el-date-picker type="date" placeholder="选择日期" v-model="license.pass_time"
+                                                        style="width: 100%;"></el-date-picker>
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
-                                    <el-form-item label="邮箱">
-                                        <el-input v-model="license.valid_date"></el-input>
+                                    <el-form-item label="有效日期">
+                                        <el-date-picker type="date" placeholder="选择日期" v-model="license.valid_date"
+                                                        style="width: 100%;"></el-date-picker>
                                     </el-form-item>
                                 </el-col>
                             </el-row>
                             <el-row>
                                 <el-col :span="8">
-                                    <el-form-item label="籍贯">
+                                    <el-form-item label="附件">
                                         <el-input v-model="license.files"></el-input>
                                     </el-form-item>
                                 </el-col>
                             </el-row>
                             <el-row>
                                 <el-col :span="8">
-                                    <el-form-item label="籍贯">
-                                        <el-input v-model="license.unvalide_date"></el-input>
+                                    <el-form-item label="有效日期止">
+                                        <el-date-picker type="date" placeholder="选择日期" v-model="license.unvalide_date"
+                                                        style="width: 100%;"></el-date-picker>
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
-                                    <el-form-item label="邮箱">
+                                    <el-form-item label="备注">
                                         <el-input type="textarea" v-model="license.remark"></el-input>
                                     </el-form-item>
                                 </el-col>
@@ -222,13 +225,11 @@
                 this.ruleForm.other_license.push({
                     number: '',
                     type: '',
-                    pass_time: '',
-                    valid_date: '',
-                    unvalide_date: '',
+                    pass_time: null,
+                    valid_date: null,
+                    unvalide_date: null,
                     files: '',
-                    remark: '',
-                    time: '',
-                    key: Date.now()
+                    remark: ''
                 });
             },
             submitForm(formName) {
