@@ -7,5 +7,3 @@ export function getOrderList(params) {
     params
   });
 }
-
-

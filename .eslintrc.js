@@ -178,7 +178,8 @@ module.exports = {
         'func-call-spacing': 'error',
 
         // enforce consistent indentation
-        indent: ['error', 2, {SwitchCase: 1}],
+        // 缩进风格
+        //indent: ['error', 2, {SwitchCase: 1}],
 
         // enforce the consistent use of either double or single quotes in JSX attributes
         'jsx-quotes': 'error',

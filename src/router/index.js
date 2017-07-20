@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+
 const _import = require('./_import_' + process.env.NODE_ENV);
 // in development env not use Lazy Loading,because Lazy Loading large page will cause webpack hot update too slow.so only in production use Lazy Loading
 
@@ -23,64 +24,74 @@ const OrderList = _import('order/list');
 
 Vue.use(Router);
 
- /**
-  * icon : the icon show in the sidebar
-  * hidden : if `hidden:true` will not show in the sidebar
-  * redirect : if `redirect:noredirect` will not redirct in the levelbar
-  * noDropdown : if `noDropdown:true` will not has submenu in the sidebar
-  * meta : `{ role: ['admin'] }`  will control the page role
-  **/
+/**
+ * icon : the icon show in the sidebar
+ * hidden : if `hidden:true` will not show in the sidebar
+ * redirect : if `redirect:noredirect` will not redirct in the levelbar
+ * noDropdown : if `noDropdown:true` will not has submenu in the sidebar
+ * meta : `{ role: ['admin'] }`  will control the page role
+ **/
 export const constantRouterMap = [
-  { path: '/login', component: Login, hidden: true },
-  { path: '/404', component: Err404, hidden: true },
-  {
-    path: '/',
-    component: Layout,
-    redirect: '/dashboard',
-    name: 'Home',
-    hidden: true,
-    children: [{ path: 'dashboard', component: dashboard }]
-  }
+    { path: '/login', component: Login, hidden: true },
+    { path: '/404', component: Err404, hidden: true },
+    {
+        path: '/',
+        component: Layout,
+        redirect: '/dashboard',
+        name: 'Home',
+        hidden: true,
+        children: [{ path: 'dashboard', component: dashboard }]
+    }
 ]
 
 export default new Router({
-  // mode: 'history', //后端支持可开
-  scrollBehavior: () => ({ y: 0 }),
-  routes: constantRouterMap
+    // mode: 'history', //后端支持可开
+    scrollBehavior: () => ({ y: 0 }),
+    routes: constantRouterMap
 });
 
 export const asyncRouterMap = [
-  {
-    path: '/customer',
-    component: Layout,
-    redirect: 'noredirect',
-    name: '客户管理',
-    icon: 'zujian',
-    children: [
-        { path: 'index', component: CustomerOrderAdd, name: '一键下单', icon: 'zonghe' },
-        { path: 'index2', component: OrderList, name: '订单管理', icon: 'zonghe' }
-    ]
-  },
-  {
-    path: '/example',
-    component: Layout,
-    redirect: 'noredirect',
-    name: 'Example',
-    icon: 'zujian',
-    children: [
-      { path: 'index', component: Form, name: 'Form', icon: 'zonghe' }
-    ]
-  },
+    {
+        path: '/customer',
+        component: Layout,
+        redirect: 'noredirect',
+        name: '客户管理',
+        icon: 'zujian',
+        children: [
+            { path: 'index', component: CustomerOrderAdd, name: '一键下单', icon: 'zonghe' },
+            { path: 'index2', component: OrderList, name: '订单管理', icon: 'zonghe' }
+        ]
+    },
+    {
+        path: '/fleet',
+        component: Layout,
+        redirect: 'noredirect',
+        name: '车队管理',
+        icon: 'zujian',
+        children: [
+            { path: 'index', component: resolve => require(['@/views/fleet/driver_add'], resolve), name: '添加司机', icon: 'zonghe' }
+        ]
+    },
+    {
+        path: '/example',
+        component: Layout,
+        redirect: 'noredirect',
+        name: 'Example',
+        icon: 'zujian',
+        children: [
+            { path: 'index', component: Form, name: 'Form', icon: 'zonghe' }
+        ]
+    },
 
-  {
-    path: '/table',
-    component: Layout,
-    redirect: '/table/index',
-    name: 'Table',
-    icon: 'tubiaoleixingzhengchang',
-    noDropdown: true,
-    children: [{ path: 'index', component: Table, name: 'Table', meta: { role: ['admin'] } }]
-  },
+    {
+        path: '/table',
+        component: Layout,
+        redirect: '/table/index',
+        name: 'Table',
+        icon: 'tubiaoleixingzhengchang',
+        noDropdown: true,
+        children: [{ path: 'index', component: Table, name: 'Table', meta: { role: ['admin'] } }]
+    },
 
-  { path: '*', redirect: '/404', hidden: true }
+    { path: '*', redirect: '/404', hidden: true }
 ];
